@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternal Health Assistant</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+        /* General Page Styling */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container Section */
+        .container {
+            flex: 1; /* This will allow the container to take up all available space */
+        }
+
+        /* Footer Styling */
+        footer {
+            color: black; /* Adjust text color to contrast with the background */
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Maternal Health Assistant</h1>
+        </div>
+
+        <!-- Input Section for User Input -->
+        <div class="input-section">
+            <input type="text" id="inputText" placeholder="Share your pregnancy stage and how you're feeling..." class="input-field">
+            <button id="generateBtn" class="generate-btn">Generate Advice</button>
+        </div>
+
+        <!-- Output Content Area -->
+        <div class="chat-box" id="outputContent"></div>
+
+        <!-- Action Buttons Section -->
+        <div class="buttons">
+            <button id="copyBtn" class="action-btn">Copy</button>
+            <button id="downloadBtn" class="action-btn">Download</button>
+            <button id="infoBtn" class="action-btn">Info</button>
+        </div>
+
+        <!-- Info Modal -->
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Info</h2>
+                <p>This tool provides personalized maternal health advice based on your pregnancy stage.</p>
+            </div>
+        </div>
+
+        <!-- Loader Section -->
+        <div id="loader" class="loader">
+            <img src="life.gif" alt="Loading...">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; <span id="footerYear"></span> Maternal Health Assistant. All rights reserved.</p>
+        <p>Developed by Tooba Mir</p>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+
+    <!-- Inline JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set the current year in the footer
+            const year = new Date().getFullYear();
+            const footerYear = document.querySelector('#footerYear');
+            footerYear.textContent = year;
+        });
+        
+        window.addEventListener('load', function() {
+            // Hide the loader once the page has fully loaded
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
