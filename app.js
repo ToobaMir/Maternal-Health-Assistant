@@ -1,6 +1,6 @@
 // API Key and Endpoint Setup
 // Endpoint of the serverless function
-const endpoint = '/api/fetchData'; // This will call the backend serverless function
+const endpoint = '/api/getData'; // This will call the backend serverless function
 
 // Fetch data from the serverless function
 fetch(endpoint)
