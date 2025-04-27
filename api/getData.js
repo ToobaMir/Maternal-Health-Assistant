@@ -6,10 +6,9 @@ export default async function handler(req, res) {
       throw new Error('API Key not found in environment variables');
     }
 
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -23,9 +22,9 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-
     res.status(200).json(data);
-  } catch (error) {
+
+  } catch (error) {s
     console.error(error);
     res.status(500).json({ error: 'An error occurred while fetching data', message: error.message });
   }
