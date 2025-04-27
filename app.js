@@ -1,6 +1,17 @@
 // API Key and Endpoint Setup
-const GEMINI_API_KEY = ""; // Enter your own API key here
-const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+// Endpoint of the serverless function
+const endpoint = '/api/fetchData'; // This will call the backend serverless function
+
+// Fetch data from the serverless function
+fetch(endpoint)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data); // Handle the response (display data in the UI, etc.)
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
 
 // DOM Element References
 const generateBtn = document.getElementById('generateBtn');
