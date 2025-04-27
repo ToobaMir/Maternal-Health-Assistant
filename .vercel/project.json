@@ -1,1 +1,17 @@
-{"projectId":"prj_C6r49905NiYQ63wURT67W55HSonR","orgId":"team_8tFi7O4x4sLClC6JwvTL6UmG"}
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "api/gemini.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "env": {
+      "GEMINI_API_KEY": "@gemini-api-key"
+    }
+  }
+  
