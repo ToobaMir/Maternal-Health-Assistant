@@ -11,4 +11,4 @@
 4. Paste your API key into the first line of the app.js file as instructed in the code.
 5. Save the file and you're all set!
 
-⚠️ **Important:** Keep your API key private. Do not share it publicly or commit it to public repositories. format this read me file
+⚠️ **Important:** Keep your API key private. Do not share it publicly or commit it to public repositories.
