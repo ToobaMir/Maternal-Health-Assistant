@@ -12,3 +12,6 @@
 5. Save the file and you're all set!
 
 ⚠️ **Important:** Keep your API key private. Do not share it publicly or commit it to public repositories.
+
+**Update: My project won 3rd place in the Web Dev. competiton held by my university's chapter of Google Developer Groups on Campus.**
+Check out my official entry here: https://www.canva.com/design/DAGl2BGoNCo/w3AXNjOQQahJmt0a3mdRtg/view?utm_content=DAGl2BGoNCo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2cc77e52de 
