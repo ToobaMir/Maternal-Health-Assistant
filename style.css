@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    background: url('10508261.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fceff1; 
+}
+
+.container {
+    width: 90%;
+    margin-top: 100px;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 15px 5px rgba(255, 20, 147, 0.4); 
+    backdrop-filter: blur(10px);
+}
+
+
+.header h1 {
+    font-size: 45px;
+    font-family: "Roboto Flex", sans-serif;
+    color: #c32056;
+    margin-bottom: 20px;
+}
+
+.input-section {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #f9c5d1;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.generate-btn {
+    padding: 15px 25px;
+    background-color: #fc678a;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 200;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-btn:hover {
+    background-color: #9a3d4e;
+}
+
+.chat-box {
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 20px;
+    padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative; 
+}
+
+.loader {
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    z-index: 999;
+}
+
+.loader img {
+    width: 120px; /* size of life GIF */
+    height: auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px;
+    background-color: #fc678a;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #9a3d4e;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    color: #555;
+    padding: 20px;
+    border-radius: 15px;
+    width: 320px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.close {
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+}
+
+.advice-heading {
+    font-size: 1.7rem;
+    color: rgba(195, 32, 86, 0.8); 
+    font-weight: 400;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid pink;
+    padding-bottom: 0.5rem;
+}
+
+
+.advice-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.advice-card {
+    font-family: "Quicksand", sans-serif;
+    background: #ffe6f0; 
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2); 
+    font-size: 1rem;
+    color: #d63384; 
+    border: 1px solid hotpink;
+    transition: transform 0.2s;
+}
+
+.advice-card:hover {
+    transform: scale(1.03);
+    background: #ffd6eb;
+}
+
+.advice-subheading {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(195, 32, 86, 0.807);
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    color: rgb(255, 255, 255) !important;
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 11px;
+}
