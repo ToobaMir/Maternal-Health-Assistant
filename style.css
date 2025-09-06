@@ -210,3 +210,70 @@ footer p {
     margin: 5px 0;
     font-size: 11px;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .input-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-field {
+        margin-right: 0;
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .generate-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .chat-box {
+        height: 250px;
+        font-size: 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+
+    .advice-heading {
+        font-size: 1.3rem;
+    }
+
+    .advice-card {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .header h1 {
+        font-size: 36px;
+    }
+
+    .chat-box {
+        height: 300px;
+    }
+}
+
+
