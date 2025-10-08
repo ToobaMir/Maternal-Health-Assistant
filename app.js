@@ -38,18 +38,13 @@ generateBtn.addEventListener('click', async () => {
   try {
     // Fetch advice from the API
     const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: [
-          { parts: [{text: `You are an AI maternal health assistant. 
-                      The user may write in English, Roman Urdu, or Urdu script. 
-                      She says: ${userInput}. Reply back in the same language or script she used. Always provide detailed, safe, and supportive advice relevant to her stage.` }] }
-        ]
-      })
-    });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ userInput })
+});
+
     
 
     const data = await response.json();
@@ -157,6 +152,7 @@ window.addEventListener('click', (event) => {
     infoModal.style.display = 'none';
   }
 });
+
 
 
 
