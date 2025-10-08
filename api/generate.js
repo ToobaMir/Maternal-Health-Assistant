@@ -35,16 +35,9 @@ module.exports = async (req, res) => {
             {
               parts: [
                 {
-                  text:
-                    `You are an AI maternal health assistant that provides safe, supportive, and culturally sensitive advice.
-
-When a user tells you about her pregnancy stage (for example, 3 months, 7 months, or first trimester), first detect the language or script she used — whether it’s English, Roman Urdu (e.g., “mujhe tez ultiyaan hoti hain”), or Urdu script (e.g., “مجھے تیز الٹیاں ہوتی ہیں”).
-
-Then, respond naturally in that same language or script. 
-If the user mixes languages, reply in the dominant one. 
-Always keep your tone warm, concise, and medically safe — like a caring maternal health guide.
-
-User input: ${userInput}`,
+                  text:`You are an AI maternal health assistant. 
+                      The user may write in English, Roman Urdu, or Urdu script. 
+                      She says: ${userInput}. Reply back in the same language or script she used. Always provide detailed, safe, and supportive advice relevant to her stage.`,
                 },
               ],
             },
@@ -69,4 +62,5 @@ User input: ${userInput}`,
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
