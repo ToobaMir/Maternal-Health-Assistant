@@ -1,4 +1,6 @@
-
+// API Key and Endpoint Setup
+const GEMINI_API_KEY = "AIzaSyBHzvV2ON2U1Cn6c9a0-NjMg-M8sl8foyc"; // Enter your API key here
+const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // DOM Element References
 const generateBtn = document.getElementById('generateBtn');
@@ -153,4 +155,5 @@ window.addEventListener('click', (event) => {
     infoModal.style.display = 'none';
   }
 });
+
 
