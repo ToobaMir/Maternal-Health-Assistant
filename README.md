@@ -3,7 +3,7 @@
 Maternal Health Assistant is an **AI-powered tool** that delivers personalized maternal health advice based on your pregnancy stage and emotional well-being. Using intelligent algorithms, it provides **supportive tips, guidance, and reassurance** to help you navigate every step of your pregnancy journey with confidence.  
 
 🔗 **Try it:** [Maternal Health Assistant](https://maternal-health-assistant.vercel.app/)  
-🎥 **Demo Video:** [Watch on LinkedIn](https://www.linkedin.com/posts/tooba-mir_aiforgood-maternalhealth-techforimpact-activity-7332759077048979456-zcga?utm_source=share&utm_medium=member_desktop&rcm=ACoAADQGVM4BV68DxdrnkWwDjkjbfT-g0mIBn7k)  
+🎥 **Demo Video:** [Watch on Youtube](https://youtu.be/SBz6vnONLkc?si=JT2hf2HQYZ1Hlbep)
 
 ---
 
