@@ -31,9 +31,7 @@ generateBtn.addEventListener('click', async () => {
     alert('Please enter your pregnancy stage!');
     return;
   }
-  //update
-
-  generateBtn.disabled = true; // Disable button to prevent double clicks
+  
   showLoader();
   outputContent.innerHTML = '';
 
@@ -155,6 +153,7 @@ window.addEventListener('click', (event) => {
     infoModal.style.display = 'none';
   }
 });
+
 
 
 
