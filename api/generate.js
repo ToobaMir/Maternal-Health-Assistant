@@ -2,6 +2,7 @@
 // Serverless function (runs on Vercel, not in the browser)
 
 module.exports = async (req, res) => {
+    console.log("GEMINI_API_KEY:", process.env.GEMINI_API_KEY ? "Loaded" : "Not loaded");
   // Basic CORS support (handy if you preview from other local servers)
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -62,5 +63,6 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 
