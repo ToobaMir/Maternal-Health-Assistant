@@ -2,7 +2,10 @@
 // Serverless function (runs on Vercel, not in the browser)
 
 module.exports = async (req, res) => {
-    console.log("GEMINI_API_KEY:", process.env.GEMINI_API_KEY ? "Loaded" : "Not loaded");
+  console.log("API /generate called");
+  console.log("GEMINI_API_KEY loaded:", process.env.GEMINI_API_KEY ? "YES" : "NO");
+ 
+
   // Basic CORS support (handy if you preview from other local servers)
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,9 +39,17 @@ module.exports = async (req, res) => {
             {
               parts: [
                 {
-                  text:`You are an AI maternal health assistant. 
-                      The user may write in English, Roman Urdu, or Urdu script. 
-                      She says: ${userInput}. Reply back in the same language or script she used. Always provide detailed, safe, and supportive advice relevant to her stage.`,
+                      text: `You are an AI Maternal Health Assistant.
+                      User says: ${userInput}.
+                      Write a detailed, caring, and safe reply using this format:
+                      
+                      Rules:
+                      - Start with a short motivational line.
+                      - Use clear headings ending with a colon.
+                      - Use bullet points (*) for advice.
+                      - Skip empty sections.
+                      - No intros like “Okay, here’s…”.
+                      - If input is in Urdu, reply fully in Urdu.`,
                 },
               ],
             },
@@ -63,6 +74,3 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
-
-
-
