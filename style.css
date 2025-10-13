@@ -321,7 +321,44 @@ footer p {
         padding: 0.8rem 1rem;
     }
 }
+/* MAKING CHANGE HERE */
 
+/* Urdu/Arabic text support */
+.chat-box {
+    /* Keep existing styles and add: */
+    unicode-bidi: plaintext; /* Allows proper RTL/LTR mixing */
+}
+
+.advice-card {
+    /* Keep existing styles and add: */
+    text-align: start; /* Aligns text based on direction */
+    direction: auto; /* Auto-detects text direction */
+    unicode-bidi: plaintext;
+}
+
+.advice-heading {
+    /* Keep existing styles and add: */
+    text-align: start;
+    direction: auto;
+    unicode-bidi: plaintext;
+}
+
+/* Ensure proper Urdu font rendering */
+#adviceContainer {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', 'Poppins', sans-serif;
+}
+
+/* Better line height for Urdu text */
+.advice-card:lang(ur),
+.advice-card:dir(rtl) {
+    line-height: 2;
+    font-size: 1.1rem;
+}
+
+.advice-heading:lang(ur),
+.advice-heading:dir(rtl) {
+    line-height: 2.2;
+}
 /* Tablet responsiveness */
 @media (min-width: 601px) and (max-width: 1024px) {
     .header h1 {
@@ -332,3 +369,4 @@ footer p {
         height: 300px;
     }
 }
+
