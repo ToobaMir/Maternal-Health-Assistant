@@ -79,12 +79,29 @@ micBtn.addEventListener('click', toggleSpeechRecognition);
 
 // Show loader
 function showLoader() {
+  console.log('Showing loader');
   loader.style.display = 'flex';
+  loader.style.zIndex = '999';
+  
+  // Ensure loader parent is positioned correctly
+  const chatBox = document.querySelector('.chat-box');
+  if (chatBox) {
+    chatBox.style.position = 'relative';
+  }
 }
 
 // Hide loader
 function hideLoader() {
   loader.style.display = 'none';
+  console.log('Loader hidden');
+  
+  // Ensure output box is visible and properly styled
+  const chatBox = document.querySelector('.chat-box');
+  if (chatBox) {
+    chatBox.style.display = 'block';
+    chatBox.style.visibility = 'visible';
+    console.log('Chat box visibility ensured');
+  }
 }
 
 // Handle the click to generate advice
@@ -214,7 +231,26 @@ generateBtn.addEventListener('click', async () => {
       }
 
       // Display formatted advice
-      outputContent.innerHTML = `<div id="adviceContainer">${formatAdvice(rawText)}</div>`;
+      const formattedContent = formatAdvice(rawText);
+      console.log('Formatted HTML length:', formattedContent.length);
+      console.log('Formatted HTML preview:', formattedContent.substring(0, 200));
+      
+      // Force clear and set innerHTML
+      outputContent.innerHTML = '';
+      
+      // Use a small delay to ensure DOM is ready
+      setTimeout(() => {
+        outputContent.innerHTML = `<div id="adviceContainer">${formattedContent}</div>`;
+        console.log('Advice inserted into DOM');
+        console.log('outputContent.innerHTML length:', outputContent.innerHTML.length);
+        
+        // Force a reflow to ensure rendering
+        outputContent.offsetHeight;
+        
+        // Scroll to make sure it's visible
+        outputContent.scrollTop = 0;
+      }, 10);
+      
       console.log('Advice displayed successfully');
 
     } else {
@@ -236,6 +272,18 @@ generateBtn.addEventListener('click', async () => {
   } finally {
     hideLoader();
     console.log('Request completed');
+    
+    // Final verification
+    setTimeout(() => {
+      console.log('Final check - outputContent has content:', outputContent.innerHTML.length > 0);
+      console.log('Final check - outputContent is visible:', window.getComputedStyle(outputContent).display !== 'none');
+      
+      // If content exists but isn't visible, force it to show
+      if (outputContent.innerHTML.length > 0 && window.getComputedStyle(outputContent).display === 'none') {
+        console.warn('Content exists but is hidden - forcing display');
+        outputContent.style.display = 'block';
+      }
+    }, 100);
   }
 });
 
