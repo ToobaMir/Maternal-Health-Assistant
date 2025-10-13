@@ -15,12 +15,14 @@ AI Maternal Health Assistant aims to fill that gap by offering timely and person
 ---
 ## ✨ Features  
 - Personalized maternal health advice by pregnancy stage  
-- Emotional well-being insights and reassurance  
+- Emotional well-being insights and reassurance
+- Speech to Text input option
+- Multilingual (English, Roman Urdu, Urdu Script)
 - Powered by **Google Gemini AI** for intelligent and adaptive guidance  
 - Accessible on any kind of device anytime, anywhere  
 
 ---
 ## 🏆 Achievements  
--  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus** (University Chapter).  
+-  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus** (COMSATS)
 -  Official competition entry: [View on Canva](https://www.canva.com/design/DAGl2BGoNCo/w3AXNjOQQahJmt0a3mdRtg/view?utm_content=DAGl2BGoNCo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2cc77e52de)  
 
