@@ -51,15 +51,19 @@
 
         <!-- Input Section for User Input -->
         <div class="input-section">
-            <input 
-                  type="text" 
-                  id="inputText" 
-                  placeholder="Share your pregnancy stage and how you're feeling..." 
-                  class="input-field" 
-                  autocomplete="off" 
-                  autocorrect="off" 
-                  spellcheck="false">
-
+            <div class="input-wrapper">
+                <input 
+                      type="text" 
+                      id="inputText" 
+                      placeholder="Share your pregnancy stage and how you're feeling..." 
+                      class="input-field" 
+                      autocomplete="off" 
+                      autocorrect="off" 
+                      spellcheck="false">
+                <button id="micBtn" class="mic-btn">
+                    <img src="mic.png" alt="Microphone" class="mic-icon">
+                </button>
+            </div>
             <button id="generateBtn" class="generate-btn">Generate Advice</button>
         </div>
 
@@ -114,5 +118,3 @@
     </script>
 </body>
 </html>
-
-
