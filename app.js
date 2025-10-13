@@ -184,7 +184,7 @@ generateBtn.addEventListener('click', async () => {
 
           // Check for section heading (lines with ** at start and end, or ending with :)
           if ((trimmedLine.startsWith('**') && trimmedLine.endsWith(':**')) || 
-              (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && trimmedLine.includes(':'))) {
+              (trimmedLine.startsWith('**') && trimmedLine.endsWith('**:') && trimmedLine.includes(':'))) {
             // Close previous section if exists
             if (insideSection) {
               currentSection += '</div>';
@@ -213,19 +213,20 @@ generateBtn.addEventListener('click', async () => {
             // Convert **text** to <strong>text</strong>
             const cleanLine = trimmedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
+            // Ensure we're in a section
             if (!insideSection) {
               currentSection = '<div class="advice-section">';
               insideSection = true;
             }
             currentSection += `<div class="advice-card">${cleanLine}</div>`;
           }
-
-          // Close section at the end
-          if (index === lines.length - 1 && insideSection) {
-            currentSection += '</div>';
-            formattedHTML += currentSection;
-          }
         });
+
+        // Close any open section at the end
+        if (insideSection) {
+          currentSection += '</div>';
+          formattedHTML += currentSection;
+        }
 
         return formattedHTML;
       }
