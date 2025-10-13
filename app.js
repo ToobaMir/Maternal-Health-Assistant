@@ -27,19 +27,16 @@ function initSpeechRecognition() {
     recognition.interimResults = false;
     recognition.lang = 'en-US';
     
-    // Handle results
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       inputText.value = transcript;
     };
     
-    // Handle end of speech recognition
     recognition.onend = () => {
       isListening = false;
       micBtn.querySelector('img').classList.remove('mic-active');
     };
     
-    // Handle errors
     recognition.onerror = (event) => {
       console.error('Speech recognition error:', event.error);
       isListening = false;
@@ -67,7 +64,6 @@ function toggleSpeechRecognition() {
     isListening = false;
     micBtn.querySelector('img').classList.remove('mic-active');
   } else {
-    // Clear input field before new speech input
     inputText.value = '';
     recognition.start();
     isListening = true;
@@ -83,12 +79,12 @@ micBtn.addEventListener('click', toggleSpeechRecognition);
 
 // Show loader
 function showLoader() {
-  loader.style.display = 'flex';  // Set loader to be visible and centered
+  loader.style.display = 'flex';
 }
 
 // Hide loader
 function hideLoader() {
-  loader.style.display = 'none';  // Hide the loader once the response is received
+  loader.style.display = 'none';
 }
 
 // Handle the click to generate advice
@@ -108,26 +104,51 @@ generateBtn.addEventListener('click', async () => {
     return;
   }
 
-  showLoader();  // Show loader when the process starts
+  console.log('Generating advice for:', userInput);
+  showLoader();
   outputContent.innerHTML = '';
 
   try {
+    console.log('Sending request to:', endpoint);
+    
     // Fetch advice from the API
     const response = await fetch(endpoint, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ userInput })
-});
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userInput })
+    });
 
-    
+    console.log('Response status:', response.status);
+    console.log('Response ok:', response.ok);
 
-    const data = await response.json();
+    // Get response text first to see what we're getting
+    const responseText = await response.text();
+    console.log('Response text:', responseText);
+
+    // Try to parse as JSON
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError);
+      console.error('Response was not valid JSON:', responseText);
+      throw new Error('Invalid response from server');
+    }
+
+    console.log('Parsed data:', data);
+
+    // Check for errors in response
+    if (!response.ok) {
+      console.error('API error:', data);
+      throw new Error(data.error || `Server error: ${response.status}`);
+    }
 
     // Check if advice is available
     if (data.candidates && data.candidates.length > 0) {
       const rawText = data.candidates[0].content.parts[0].text;
+      console.log('Raw text received:', rawText);
 
       // Formatting logic
       function formatAdvice(text) {
@@ -182,15 +203,27 @@ generateBtn.addEventListener('click', async () => {
 
       // Display formatted advice
       outputContent.innerHTML = `<div id="adviceContainer">${formatAdvice(rawText)}</div>`;
+      console.log('Advice displayed successfully');
 
     } else {
-      outputContent.innerHTML = "Sorry, I couldn't find any advice.";
+      console.error('No candidates in response:', data);
+      outputContent.innerHTML = "<div class='advice-card'>Sorry, I couldn't generate advice. Please try again.</div>";
     }
   } catch (error) {
-    console.error('Error:', error);
-    outputContent.innerHTML = "There was an error getting the advice. Please try again later.";
+    console.error('Error details:', error);
+    console.error('Error stack:', error.stack);
+    
+    let errorMessage = "There was an error getting the advice. ";
+    if (error.message) {
+      errorMessage += error.message;
+    } else {
+      errorMessage += "Please check the console for details and try again.";
+    }
+    
+    outputContent.innerHTML = `<div class='advice-card' style='background-color: #ffe6e6; border-color: #ff6b6b; color: #c92a2a;'>${errorMessage}</div>`;
   } finally {
-    hideLoader();  // Hide loader when the response is processed
+    hideLoader();
+    console.log('Request completed');
   }
 });
 
@@ -228,9 +261,3 @@ window.addEventListener('click', (event) => {
     infoModal.style.display = 'none';
   }
 });
-
-
-
-
-
-
