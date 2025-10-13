@@ -158,40 +158,52 @@ generateBtn.addEventListener('click', async () => {
         let insideSection = false;
 
         lines.forEach((line, index) => {
-          line = line.trim();
+          const trimmedLine = line.trim();
 
-          // Check for new section heading
-          if (line.endsWith(':') && !line.startsWith('*')) {
+          // Skip empty lines
+          if (trimmedLine === '') {
+            return;
+          }
+
+          // Check for section heading (lines with ** at start and end, or ending with :)
+          if ((trimmedLine.startsWith('**') && trimmedLine.endsWith(':**')) || 
+              (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && trimmedLine.includes(':'))) {
+            // Close previous section if exists
             if (insideSection) {
               currentSection += '</div>';
               formattedHTML += currentSection;
             }
-            const heading = line.replace(/:$/, '').replace(/\*/g, '');
+            const heading = trimmedLine.replace(/\*\*/g, '').replace(/:$/, '');
             formattedHTML += `<h2 class="advice-heading"><strong>${heading}</strong>:</h2>`;
             currentSection = '<div class="advice-section">';
             insideSection = true;
           } 
-          // Handle bullet list items
-          else if (line.startsWith('*') && !line.startsWith('**')) {
-            let listItem = line.replace(/^\*\s*/, '').replace(/\*\*/g, '');
-            if (listItem.endsWith(':')) {
-              const textBeforeColon = listItem.replace(/:$/, '').trim();
-              listItem = `<strong>${textBeforeColon}</strong>:` + listItem.slice(textBeforeColon.length);
+          // Handle bullet list items (starts with *)
+          else if (trimmedLine.startsWith('*')) {
+            // Remove the bullet marker and any leading spaces
+            let listItem = trimmedLine.replace(/^\*\s*/, '');
+            // Convert **text** to <strong>text</strong>
+            listItem = listItem.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            if (!insideSection) {
+              currentSection = '<div class="advice-section">';
+              insideSection = true;
             }
             currentSection += `<div class="advice-card">${listItem}</div>`;
           } 
-          // Handle subheading
-          else if (line.startsWith('**') && line.endsWith('**')) {
-            const subheading = line.replace(/\*\*/g, '');
-            currentSection += `<div class="advice-subheading"><strong>${subheading}</strong></div>`;
-          } 
-          // Default text formatting
-          else if (line !== '') {
-            const cleanLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+          // Handle regular paragraphs
+          else {
+            // Convert **text** to <strong>text</strong>
+            const cleanLine = trimmedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            if (!insideSection) {
+              currentSection = '<div class="advice-section">';
+              insideSection = true;
+            }
             currentSection += `<div class="advice-card">${cleanLine}</div>`;
           }
 
-          // Append section if it's the last line
+          // Close section at the end
           if (index === lines.length - 1 && insideSection) {
             currentSection += '</div>';
             formattedHTML += currentSection;
