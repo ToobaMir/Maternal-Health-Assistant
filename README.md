@@ -1,8 +1,8 @@
-# Maternal Health Assistant  
+# AI Maternal Health Assistant (AMHA)
 
 Maternal Health Assistant is an **AI-powered tool** that delivers personalized maternal health advice based on your pregnancy stage and emotional well-being. Using intelligent algorithms, it provides **supportive tips, guidance, and reassurance** to help you navigate every step of your pregnancy journey with confidence.  
 
-🔗 **Try it:** [Maternal Health Assistant](https://maternal-health-assistant.vercel.app/)  
+🔗 **Try it:** [AI Maternal Health Assistant](https://ai-maternal-health-assistant-amha.vercel.app/)  
 🎥 **Demo Video:** [Watch on Youtube](https://youtu.be/SBz6vnONLkc?si=JT2hf2HQYZ1Hlbep)
 
 ---
