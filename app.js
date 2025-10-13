@@ -11,6 +11,75 @@ const downloadBtn = document.getElementById('downloadBtn');
 const infoBtn = document.getElementById('infoBtn');
 const infoModal = document.getElementById('infoModal');
 const closeModal = document.querySelector('.close');
+const micBtn = document.getElementById('micBtn');
+
+// Speech Recognition Setup
+let recognition = null;
+let isListening = false;
+
+// Initialize speech recognition if available
+function initSpeechRecognition() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  
+  if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+    
+    // Handle results
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      inputText.value = transcript;
+    };
+    
+    // Handle end of speech recognition
+    recognition.onend = () => {
+      isListening = false;
+      micBtn.querySelector('img').classList.remove('mic-active');
+    };
+    
+    // Handle errors
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      isListening = false;
+      micBtn.querySelector('img').classList.remove('mic-active');
+      
+      if (event.error === 'not-allowed') {
+        alert('Please enable microphone access to use speech input.');
+      }
+    };
+  } else {
+    micBtn.style.display = 'none';
+    console.log('Speech recognition not supported by this browser.');
+  }
+}
+
+// Toggle speech recognition
+function toggleSpeechRecognition() {
+  if (!recognition) {
+    alert('Speech recognition is not supported by your browser.');
+    return;
+  }
+  
+  if (isListening) {
+    recognition.stop();
+    isListening = false;
+    micBtn.querySelector('img').classList.remove('mic-active');
+  } else {
+    // Clear input field before new speech input
+    inputText.value = '';
+    recognition.start();
+    isListening = true;
+    micBtn.querySelector('img').classList.add('mic-active');
+  }
+}
+
+// Initialize speech recognition
+initSpeechRecognition();
+
+// Mic button event listener
+micBtn.addEventListener('click', toggleSpeechRecognition);
 
 // Show loader
 function showLoader() {
@@ -24,6 +93,13 @@ function hideLoader() {
 
 // Handle the click to generate advice
 generateBtn.addEventListener('click', async () => {
+  // Stop speech recognition if active
+  if (isListening && recognition) {
+    recognition.stop();
+    isListening = false;
+    micBtn.querySelector('img').classList.remove('mic-active');
+  }
+
   const userInput = inputText.value.trim();
 
   // Check if input is empty
@@ -31,10 +107,9 @@ generateBtn.addEventListener('click', async () => {
     alert('Please enter your pregnancy stage!');
     return;
   }
-  
-  showLoader();
-  outputContent.innerHTML = '';
 
+  showLoader();  // Show loader when the process starts
+  outputContent.innerHTML = '';
 
   try {
     // Fetch advice from the API
@@ -153,8 +228,6 @@ window.addEventListener('click', (event) => {
     infoModal.style.display = 'none';
   }
 });
-
-
 
 
 
