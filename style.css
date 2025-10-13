@@ -131,7 +131,8 @@ body {
     font-size: 16px;
     margin-bottom: 20px;
     box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
-    position: relative; 
+    position: relative;
+    unicode-bidi: plaintext; /* Allows proper RTL/LTR mixing */
 }
 
 .loader {
@@ -217,6 +218,9 @@ body {
     margin-bottom: 2rem;
     border-bottom: 2px solid pink;
     padding-bottom: 0.5rem;
+    text-align: start;
+    direction: auto;
+    unicode-bidi: plaintext;
 }
 
 
@@ -237,6 +241,9 @@ body {
     color: #d63384; 
     border: 1px solid hotpink;
     transition: transform 0.2s;
+    text-align: start;
+    direction: auto;
+    unicode-bidi: plaintext;
 }
 
 .advice-card:hover {
@@ -321,44 +328,27 @@ footer p {
         padding: 0.8rem 1rem;
     }
 }
-/* MAKING CHANGE HERE */
 
-/* Urdu/Arabic text support */
-.chat-box {
-    /* Keep existing styles and add: */
-    unicode-bidi: plaintext; /* Allows proper RTL/LTR mixing */
+/* Urdu/Arabic text support - Apply Urdu font ONLY for RTL content */
+#adviceContainer[dir="rtl"] {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', sans-serif;
 }
 
-.advice-card {
-    /* Keep existing styles and add: */
-    text-align: start; /* Aligns text based on direction */
-    direction: auto; /* Auto-detects text direction */
-    unicode-bidi: plaintext;
-}
-
-.advice-heading {
-    /* Keep existing styles and add: */
-    text-align: start;
-    direction: auto;
-    unicode-bidi: plaintext;
-}
-
-/* Ensure proper Urdu font rendering */
-#adviceContainer {
-    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', 'Poppins', sans-serif;
+/* Keep default font for LTR (English) content */
+#adviceContainer[dir="ltr"] {
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
 }
 
 /* Better line height for Urdu text */
-.advice-card:lang(ur),
-.advice-card:dir(rtl) {
+#adviceContainer[dir="rtl"] .advice-card {
     line-height: 2;
     font-size: 1.1rem;
 }
 
-.advice-heading:lang(ur),
-.advice-heading:dir(rtl) {
+#adviceContainer[dir="rtl"] .advice-heading {
     line-height: 2.2;
 }
+
 /* Tablet responsiveness */
 @media (min-width: 601px) and (max-width: 1024px) {
     .header h1 {
@@ -369,4 +359,3 @@ footer p {
         height: 300px;
     }
 }
-
