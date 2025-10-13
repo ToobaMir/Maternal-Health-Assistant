@@ -236,12 +236,27 @@ generateBtn.addEventListener('click', async () => {
       console.log('Formatted HTML length:', formattedContent.length);
       console.log('Formatted HTML preview:', formattedContent.substring(0, 200));
       
+      // Detect if content is in Urdu/Arabic (RTL)
+      const isRTL = /[\u0600-\u06FF]/.test(rawText); // Checks for Arabic/Urdu characters
+      console.log('Is RTL (Urdu/Arabic):', isRTL);
+      
       // Force clear and set innerHTML
       outputContent.innerHTML = '';
       
       // Use a small delay to ensure DOM is ready
       setTimeout(() => {
-        outputContent.innerHTML = `<div id="adviceContainer">${formattedContent}</div>`;
+        const container = document.createElement('div');
+        container.id = 'adviceContainer';
+        if (isRTL) {
+          container.setAttribute('dir', 'rtl');
+          container.style.textAlign = 'right';
+        } else {
+          container.setAttribute('dir', 'ltr');
+          container.style.textAlign = 'left';
+        }
+        container.innerHTML = formattedContent;
+        
+        outputContent.appendChild(container);
         console.log('Advice inserted into DOM');
         console.log('outputContent.innerHTML length:', outputContent.innerHTML.length);
         
