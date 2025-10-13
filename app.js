@@ -132,8 +132,11 @@ generateBtn.addEventListener('click', async () => {
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
       },
+      cache: 'no-store',
       body: JSON.stringify({ userInput })
     });
 
