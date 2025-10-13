@@ -42,13 +42,65 @@ body {
     margin-bottom: 20px;
 }
 
+.input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    margin-right: 10px;
+}
+
 .input-field {
     flex: 1;
     padding: 15px;
+    padding-right: 45px; /* Increased right padding to make room for mic button */
     border: 2px solid #f9c5d1;
     border-radius: 10px;
     font-size: 16px;
-    margin-right: 10px;
+}
+
+.mic-btn {
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 34px; /* Fixed width */
+    height: 34px; /* Fixed height */
+    border-radius: 50%;
+}
+
+.mic-btn:hover {
+    background-color: rgba(252, 103, 138, 0.1);
+    border-radius: 50%;
+}
+
+.mic-icon {
+    width: 20px; /* Slightly smaller for better fit */
+    height: 20px;
+}
+
+.mic-active {
+    animation: pulse 1.5s infinite;
+    background-color: rgba(252, 103, 138, 0.2);
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .generate-btn {
@@ -223,11 +275,16 @@ footer p {
         gap: 10px;
     }
 
-    .input-field {
+    .input-wrapper {
+        width: 100%;
         margin-right: 0;
+    }
+
+    .input-field {
         width: 100%;
         font-size: 14px;
         padding: 12px;
+        padding-right: 40px;
     }
 
     .generate-btn {
@@ -275,5 +332,3 @@ footer p {
         height: 300px;
     }
 }
-
-
