@@ -23,6 +23,5 @@ AI Maternal Health Assistant aims to fill that gap by offering timely and person
 
 ---
 ## 🏆 Achievements  
--  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus** (COMSATS)
--  Official competition entry: [View on Canva](https://www.canva.com/design/DAGl2BGoNCo/w3AXNjOQQahJmt0a3mdRtg/view?utm_content=DAGl2BGoNCo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2cc77e52de)  
+-  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus** 
 
