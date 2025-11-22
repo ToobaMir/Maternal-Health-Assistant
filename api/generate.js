@@ -39,8 +39,10 @@ module.exports = async (req, res) => {
       return res.status(500).json({ error: 'API key not configured' });
     }
 
-    // Call Gemini API
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${process.env.GEMINI_API_KEY}`;
+    // Call Gemini API (old- THIS MODEL HAS BEEN RETIRED BY GOOGLE):
+    //const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${process.env.GEMINI_API_KEY}`;
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
     
     console.log("Calling Gemini API...");
     
@@ -122,3 +124,4 @@ Start your response now with the warm sentence, then the formatted advice in the
     });
   }
 };
+
