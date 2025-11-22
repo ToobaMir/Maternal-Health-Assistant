@@ -23,5 +23,6 @@ AI Maternal Health Assistant aims to fill that gap by offering timely and person
 
 ---
 ## 🏆 Achievements  
--  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus** 
+-  **3rd Place Winner** at the Web Development Competition organized by **Google Developer Groups on Campus**
+-  **10th Place** out of 250 teams in Regional Round of Ignite National Technology Fund AI Competition 2025
 
